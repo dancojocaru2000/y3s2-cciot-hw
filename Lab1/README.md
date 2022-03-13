@@ -63,3 +63,14 @@ public:
 };
 ```
 
+## Slide 17
+
+### Problem
+
+Write a program that implements a class hierarchy that can be used to model geometric shapes, based on the following structure:
+
+[shape_start.cpp](./shape_start.cpp)
+
+### Solution
+
+See [shape_start_sol.cpp](./shape_start_sol.cpp).
