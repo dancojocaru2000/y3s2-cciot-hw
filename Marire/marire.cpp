@@ -279,6 +279,8 @@ int main() {
 			int removed = remove_alt5(students);
 			cout << "Removed " << removed << " student" << (removed == 1 ? "" : "s") << endl;
 			break;
+		default:
+			cout << "Unknown choice!" << endl;
 		}
 		if (exit) {
 			break;
