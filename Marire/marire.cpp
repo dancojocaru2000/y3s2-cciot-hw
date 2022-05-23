@@ -137,7 +137,26 @@ void insert_student(std::vector<Student>& students) {
 		std::getline(cin, tmp);
 		courses_grades.emplace_back(course_name, grade);
 	}
-	cout << "Added student." << endl;
+	cout << "Position to insert after? ";
+	int k;
+	cin >> k;
+	if (!(-1 <= k && k < students.size())) {
+		cout << "Position " << k << " doesn't exist. Insert at beginning or end?" << endl;
+		cout << "1. Beginning" << endl;
+		cout << "2. End" << endl;
+		cin >> k;
+		switch (k) {
+		case 1:
+			k = -1;
+			break;
+		case 2:
+			k = students.size() - 1;
+			break;
+		default:
+			cout << "Invalid choice!" << endl;
+			return;
+		}
+	}
 
 	Student new_student;
 	new_student.set_name(name);
@@ -146,7 +165,9 @@ void insert_student(std::vector<Student>& students) {
 	}
 	new_student.set_year(year);
 	new_student.set_course_grades(courses_grades);
-	students.push_back(new_student);
+	students.insert(students.begin() + (k + 1), new_student);
+
+	cout << "Added student." << endl;
 }
 
 int remove_alt5(std::vector<Student>& students) {
@@ -274,11 +295,12 @@ int main() {
 		case 5:
 			insert_student(students);
 			break;
-		case 6:
+		case 6: {
 			// remove average less than 5
 			int removed = remove_alt5(students);
 			cout << "Removed " << removed << " student" << (removed == 1 ? "" : "s") << endl;
 			break;
+		}
 		default:
 			cout << "Unknown choice!" << endl;
 		}
